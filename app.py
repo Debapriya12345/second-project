@@ -20,7 +20,7 @@ api_requests = Counter("api_requests_total", "Total API requests received")
 model_accuracy = Gauge("model_accuracy", "Current accuracy of the model")
 
 # Set a minimum accuracy threshold for retraining
-ACCURACY_THRESHOLD = 0.80  # Adjust based on requirements
+ACCURACY_THRESHOLD = 0.80  # Adjust based on requirements given
 
 
 @app.get("/")
