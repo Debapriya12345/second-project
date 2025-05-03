@@ -33,3 +33,5 @@ def train_and_save_model(model_path="model.pkl"):
     print(f"✅ Model saved at {model_path} with Accuracy: {accuracy:.2f}")
 
     return accuracy  # Return accuracy for monitoring
+train_and_save_model()
+print("EOC")

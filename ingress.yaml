@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1  #Uses the latest Kubernetes Ingress API
+kind: Ingress
+metadata:
+  name: fastapi-mlops-ingress  
+spec:
+  ingressClassName: nginx  # ✅ Fix: Define the Ingress Class explicitly ;Specifies that the Nginx Ingress Controller will handle this Ingress.
+  rules:
+    - host: fastapi-mlops.eastus.cloudapp.azure.com
+      http:
+        paths:
+          - path: / # routes all traffic to FastAPI service
+            pathType: Prefix
+            backend:
+              service:
+                name: fastapi-mlops-service # Same name like service.yaml
+                port:
+                  number: 80 # ✅ Must match the service port in service.yaml

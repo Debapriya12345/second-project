@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-mlops-deployment   # ✅ Name of the deployment
+spec:
+  replicas: 2  # ✅ Scale the application for redundancy
+  selector:
+    matchLabels:
+      app: fastapi-mlops  # ✅ Must match template labels ; Looks for Pods that have this label.
+  template:
+    metadata:
+      labels:
+        app: fastapi-mlops  # ✅ Must match selector labels ; Adds a label so Kubernetes knows which Pods belong to this Deployment.
+    spec:
+      containers:
+        - name: fastapi-mlops
+          image: debapriya777/mlsecondapideployment:latest  # ✅ Your new FastAPI container sirvaiys/fastapi-mlops
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
